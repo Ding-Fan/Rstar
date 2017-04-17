@@ -1,0 +1,36 @@
+{
+  "name": "rstar",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.15.3",
+    "history": "^4.6.1",
+    "normalize.css": "^5.0.0",
+    "re-base": "^2.6.0",
+    "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-progress-button": "^5.0.2",
+    "react-router": "4.0.0-alpha.4"
+  },
+  "devDependencies": {
+    "autoprefixer-stylus": "^0.13.0",
+    "babel-eslint": "^7.1.1",
+    "concurrently": "^3.4.0",
+    "eslint": "^3.18.0",
+    "eslint-plugin-flowtype": "^2.30.3",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "react-scripts": "0.9.5",
+    "stylus": "^0.54.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
+    "eject": "react-scripts eject",
+    "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
+    "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css"
+  }
+}
