@@ -8,11 +8,11 @@ import 'normalize.css'
 import './index.css';
 
 // this for GitHub page
-// const repo = `/${window.location.pathname.split('/')[1]}`;
+const repo = `/${window.location.pathname.split('/')[1]}`;
 
 const Root = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={repo}>
             <div>
                 <Match exactly pattern="/" component={App} />
             </div>
