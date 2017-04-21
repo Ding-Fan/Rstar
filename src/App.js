@@ -24,7 +24,7 @@ class App extends Component {
   search(event) {
     event.preventDefault();
 
-    // const fixRate = '?client_id=af7043cb24039e2213d7&client_secret=b3e51a9985bc7ccf444f969ce5c26ca4fd056092';
+    const fixRate = '?client_id=af7043cb24039e2213d7&client_secret=b3e51a9985bc7ccf444f969ce5c26ca4fd056092';
     //
     // Axios.get(`https://api.github.com/users/${this.state.username}${fixRate}`)
     //   .then(
@@ -39,12 +39,16 @@ class App extends Component {
     //     }
     //   );
 
-    Axios.get(`https://api.github.com/users/${this.state.username}/repos`)
+    Axios.get(`https://api.github.com/users/${this.state.username}/repos${fixRate}`)
       .then((res) => {
 
         let stars = 0;
         res.data.forEach((item) => {
           stars += item.stargazers_count;
+        });
+
+        res.data.sort((a, b) => {
+          return b.stargazers_count - a.stargazers_count;
         });
 
         let repoAndStars = {};
@@ -56,7 +60,13 @@ class App extends Component {
         console.log(stars);
 
         this.setState({stargazers_count: stars, repoAndStars: repoAndStars});
-      });
+      })
+      .catch(
+        (err) => {
+          this.setState({stargazers_count: 0, repoAndStars: {}});
+          alert(err.response.data.message);
+        }
+      );
   }
 
   render() {
